@@ -50,7 +50,7 @@ There are two ways to run the application:
 Clone the repository and navigate to the project directory:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/leak4256/case-management-project.git
 cd <repository-directory>
 ```
 
