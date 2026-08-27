@@ -17,6 +17,25 @@ The demo is hosted on Azure free tier; the first request may take up to a minute
 
 ---
 
+## Quick Start
+
+From the repository root:
+
+```bash
+cp .env.example .env
+docker compose up --build
+```
+
+Make sure Docker Desktop is installed and running before starting the application.
+
+Once the containers are ready:
+
+* **Application:** http://localhost:4200
+* **Swagger UI:** http://localhost:4200/swagger
+
+For detailed setup instructions and alternative development options, see the sections below.
+
+
 ## Running the application
 
 There are two ways to run the application:
@@ -25,6 +44,15 @@ There are two ways to run the application:
 * **Route B — Local development:** runs the API and frontend locally, using either an existing SQL Server installation or SQL Server in Docker.
 
 ---
+
+## Getting Started
+
+Clone the repository and navigate to the project directory:
+
+```bash
+git clone <repository-url>
+cd <repository-directory>
+```
 
 ## Route A — Docker Compose
 
@@ -398,9 +426,5 @@ content.
 ## Notes
 
 * No real credentials are committed to the repository.
-* The connection string is empty in `appsettings.json` and is supplied through user secrets or an environment variable.
 * Docker Compose reads its SQL Server configuration from `.env`, which is git-ignored.
-* `.env.example` contains only a development-only container password.
-* Production credentials should be supplied through a managed secret store.
 * Timestamps are stored and returned as UTC.
-* The UI is in English.
