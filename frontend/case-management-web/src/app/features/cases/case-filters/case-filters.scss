@@ -1,0 +1,15 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.search {
+  flex: 1 1 20rem;
+}
+
+.organization {
+  flex: 1 1 14rem;
+}

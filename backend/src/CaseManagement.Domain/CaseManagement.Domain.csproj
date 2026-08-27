@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The Domain layer deliberately has no project or package references.
+    Entities and enums must not depend on EF Core, ASP.NET, or any infrastructure concern.
+  -->
+
+</Project>

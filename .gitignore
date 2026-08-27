@@ -1,0 +1,45 @@
+# ---- .NET ----
+bin/
+obj/
+*.user
+*.suo
+.vs/
+artifacts/
+
+# ---- Node / Angular ----
+node_modules/
+dist/
+.angular/
+npm-debug.log*
+
+# ---- Environment & secrets ----
+# Never commit real credentials. .env.example is the committed template.
+.env
+*.env
+!.env.example
+appsettings.Local.json
+
+# ---- Editors / OS ----
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Not part of the deliverable ----
+# The repository should contain what a reviewer needs to run and understand the
+# solution, and nothing else. Everything below is working material: AI tooling
+# configuration, planning documents, and the original assignment brief.
+SKILLS/
+plans/
+NOTES.md
+.claude/
+CLAUDE.md
+*.pdf
+
+# Leading **/ so these match at any depth, not just the repository root.
+# A pattern containing a slash but no leading **/ is anchored to the root and
+# would miss, for example, backend/.github/.
+# Only the direct children are excluded, so the deployment workflows below can be
+# re-included: git cannot re-include anything under an excluded directory.
+**/.github/*
+!/.github/workflows/
+**/copilot-instructions.md

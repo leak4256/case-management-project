@@ -1,0 +1,43 @@
+<form class="filters" [formGroup]="form">
+  <mat-form-field class="search" subscriptSizing="dynamic">
+    <mat-label>Search</mat-label>
+    <input matInput formControlName="search" placeholder="Title or organization" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field class="organization" subscriptSizing="dynamic">
+    <mat-label>Organization</mat-label>
+    <input matInput formControlName="organization" placeholder="Name starts with" />
+    <mat-icon matSuffix>domain</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status" multiple>
+      @for (status of statuses; track status) {
+        <mat-option [value]="status">{{ statusLabels[status] }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>Priority</mat-label>
+    <mat-select formControlName="priority" multiple>
+      @for (priority of priorities; track priority) {
+        <mat-option [value]="priority">{{ priority }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>Created</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate formControlName="createdFrom" placeholder="From" />
+      <input matEndDate formControlName="createdTo" placeholder="To" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker" />
+    <mat-date-range-picker #picker />
+  </mat-form-field>
+
+  <button matButton type="button" (click)="clear()">Clear</button>
+</form>

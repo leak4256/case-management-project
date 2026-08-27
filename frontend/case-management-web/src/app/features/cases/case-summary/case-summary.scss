@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-left: 4px solid var(--mat-sys-outline-variant);
+  border-radius: 4px;
+  background-color: var(--mat-sys-surface-container-low);
+}
+
+.value {
+  font: var(--mat-sys-headline-small);
+}
+
+.label {
+  font: var(--mat-sys-label-medium);
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.tile[data-accent='New'] {
+  border-left-color: #0b4a8f;
+}
+
+.tile[data-accent='InProgress'],
+.tile[data-accent='Medium'] {
+  border-left-color: #7a4b00;
+}
+
+.tile[data-accent='Waiting'] {
+  border-left-color: #4b2a86;
+}
+
+.tile[data-accent='Completed'] {
+  border-left-color: #14532d;
+}
+
+.tile[data-accent='High'] {
+  border-left-color: #8c1d18;
+}
+
+.tile[data-accent='Low'] {
+  border-left-color: #37474f;
+}

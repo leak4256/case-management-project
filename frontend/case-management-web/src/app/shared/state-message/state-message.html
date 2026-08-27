@@ -1,0 +1,7 @@
+<div class="state" role="status">
+  <mat-icon>{{ icon() }}</mat-icon>
+
+  <p>{{ message() }}</p>
+
+  <button matButton="outlined" type="button" (click)="action.emit()">{{ actionLabel() }}</button>
+</div>

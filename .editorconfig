@@ -1,0 +1,30 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+
+[*.{cs,csx}]
+indent_size = 4
+
+# Namespaces match the folder layout; file-scoped keeps one level of nesting out of every file.
+csharp_style_namespace_declarations = file_scoped:warning
+
+# 'var' only where the type is already obvious from the right-hand side.
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+dotnet_sort_system_directives_first = true
+csharp_prefer_braces = true:warning
+
+[*.{ts,js,html,scss,css,json,yml,yaml}]
+indent_size = 2
+
+[*.{csproj,props,targets,xml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false

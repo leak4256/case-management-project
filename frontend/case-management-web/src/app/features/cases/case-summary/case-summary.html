@@ -1,0 +1,8 @@
+<div class="tiles">
+  @for (tile of tiles(); track tile.label) {
+    <div class="tile" [attr.data-accent]="tile.accent">
+      <span class="value">{{ tile.value }}</span>
+      <span class="label">{{ tile.label }}</span>
+    </div>
+  }
+</div>

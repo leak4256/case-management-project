@@ -1,0 +1,58 @@
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: case-management-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      # Supplied from .env — never hard-coded. Copy .env.example to .env before starting.
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+      MSSQL_PID: Developer
+    ports:
+      # Host port 14330, not 1433: a local SQL Server instance already listens on 1433
+      # on the development machine, and binding both would fail.
+      - "14330:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    healthcheck:
+      # $$ escapes to a single $ so the shell inside the container expands the variable.
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: src/CaseManagement.Api/Dockerfile
+    container_name: case-management-api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__CaseManagementDb: "Server=sqlserver,1433;Database=CaseManagement;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True"
+    ports:
+      - "5180:8080"
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      # Migrations and the 10,000-row seed run on startup before /health answers.
+      start_period: 90s
+
+  web:
+    build:
+      context: ./frontend/case-management-web
+    container_name: case-management-web
+    ports:
+      - "4200:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  mssql-data:

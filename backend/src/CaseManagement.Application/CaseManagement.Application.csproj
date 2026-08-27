@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\CaseManagement.Domain\CaseManagement.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Abstractions only: the layer registers its own services without taking the container. -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.19" />
+  </ItemGroup>
+
+</Project>

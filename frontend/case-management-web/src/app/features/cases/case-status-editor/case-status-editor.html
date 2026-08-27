@@ -1,0 +1,15 @@
+<mat-select
+  aria-label="Status"
+  panelWidth=""
+  [value]="value()"
+  [disabled]="pending()"
+  (selectionChange)="pick($event.value)"
+>
+  <mat-select-trigger>
+    <span class="tag" [attr.data-status]="value()">{{ statusLabels[value()] }}</span>
+  </mat-select-trigger>
+
+  @for (status of statuses; track status) {
+    <mat-option [value]="status">{{ statusLabels[status] }}</mat-option>
+  }
+</mat-select>
