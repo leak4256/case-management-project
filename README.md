@@ -406,7 +406,7 @@ The demo runs on three Azure free-tier services:
 
 * **Azure SQL Database** (General Purpose serverless, free limit) — auto-pauses when idle.
 * **App Service** (Linux, F1) — hosts the API.
-* **Static Web Apps** (Free) — serves the Angular application.
+* **Static Web Apps** — serves the Angular application.
 
 Two GitHub Actions workflows in `.github/workflows/` deploy on a push that touches the relevant
 tree. The API workflow publishes the .NET project and deploys it; the frontend workflow builds the
