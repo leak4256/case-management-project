@@ -13,7 +13,7 @@ A case-tracking system for organisational requests, supporting server-side pagin
 * Application — https://proud-smoke-041bba700.7.azurestaticapps.net
 * Swagger UI — https://app-case-mgmt-mwatjxzd.azurewebsites.net/swagger
 
-The demo is hosted on Azure free tier; the first request may take up to a minute while the database and app wake from idle.
+**The demo is hosted on Azure free tier; the first request may take up to a minute while the database and app wake from idle.**
 
 ---
 
